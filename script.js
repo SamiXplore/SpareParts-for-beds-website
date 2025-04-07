@@ -118,3 +118,133 @@ document.querySelectorAll('button').forEach(button => {
     }, 1000);
   });
 });
+
+// Initialize visual indicators
+document.addEventListener('DOMContentLoaded', function() {
+  // Durability circular progress
+  const durabilityProgress = document.querySelector('.circular-progress');
+  if (durabilityProgress) {
+    const value = durabilityProgress.dataset.value;
+    durabilityProgress.style.setProperty('--value', value);
+  }
+
+  // Repairability percentage ring
+  const repairabilityRing = document.querySelector('.percentage-ring');
+  if (repairabilityRing) {
+    const percentage = repairabilityRing.querySelector('.percentage-ring').dataset.percentage;
+    repairabilityRing.style.setProperty('--percentage', percentage);
+  }
+
+  // Animate elements when they come into view
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('animate');
+      }
+    });
+  }, { threshold: 0.1 });
+
+  document.querySelectorAll('.feature-card').forEach(card => {
+    observer.observe(card);
+  });
+
+  // Add tooltips for part icons
+  document.querySelectorAll('.part-icon').forEach(icon => {
+    const title = icon.getAttribute('title');
+    const tooltip = document.createElement('div');
+    tooltip.className = 'part-tooltip';
+    tooltip.textContent = title;
+    icon.appendChild(tooltip);
+  });
+});
+
+// Smooth scroll for navigation links
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+  anchor.addEventListener('click', function (e) {
+    e.preventDefault();
+    const target = document.querySelector(this.getAttribute('href'));
+    if (target) {
+      target.scrollIntoView({
+        behavior: 'smooth'
+      });
+    }
+  });
+});
+
+// Animation observer for elements
+const animationObserver = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      // Add animation classes when element is in view
+      if (entry.target.classList.contains('durability-bar')) {
+        const years = entry.target.querySelector('.bar-fill').dataset.years;
+        entry.target.querySelector('.bar-fill').style.setProperty('--years', years);
+      }
+      if (entry.target.classList.contains('repairability-bar')) {
+        const percentage = entry.target.querySelector('.bar-fill').dataset.percentage;
+        entry.target.querySelector('.bar-fill').style.setProperty('--percentage', percentage);
+      }
+      entry.target.classList.add('animate');
+      // Stop observing after animation is triggered
+      animationObserver.unobserve(entry.target);
+    }
+  });
+}, {
+  threshold: 0.2 // Trigger when 20% of the element is visible
+});
+
+// Mobile menu toggle
+document.addEventListener('DOMContentLoaded', () => {
+  // Observe elements with animations
+  document.querySelectorAll('.durability-bar, .repairability-bar, .inventory-item, .spec-item').forEach(el => {
+    animationObserver.observe(el);
+  });
+
+  // Mobile menu functionality
+  const menuToggle = document.querySelector('.mobile-menu-toggle');
+  const navList = document.querySelector('.nav-list');
+
+  if (menuToggle && navList) {
+    menuToggle.addEventListener('click', () => {
+      navList.classList.toggle('active');
+      menuToggle.setAttribute('aria-expanded', 
+        menuToggle.getAttribute('aria-expanded') === 'false' ? 'true' : 'false'
+      );
+    });
+  }
+});
+
+// Add smooth scroll behavior for better animation experience
+document.documentElement.style.scrollBehavior = 'smooth';
+
+// Handle durability counter animations
+document.addEventListener('DOMContentLoaded', () => {
+  const durabilityCounters = document.querySelectorAll('.durability-counter');
+  
+  // Function to animate counter
+  const animateCounter = (counter) => {
+    const target = parseInt(counter.dataset.value);
+    let current = 0;
+    const duration = 800; // Reduced to 800ms from 2000ms
+    const stepTime = 40; // Update every 40ms for smoother animation
+    const steps = duration / stepTime;
+    const increment = target / steps;
+
+    // Reset counter
+    counter.textContent = '0';
+    
+    const timer = setInterval(() => {
+      current += increment;
+      if (current >= target) {
+        current = target;
+        clearInterval(timer);
+      }
+      counter.textContent = Math.round(current);
+    }, stepTime);
+  };
+
+  // Animate on page load only
+  durabilityCounters.forEach(counter => {
+    animateCounter(counter);
+  });
+});

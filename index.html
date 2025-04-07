@@ -31,11 +31,9 @@
       </button>
       <ul class="nav-list">
         <li><a href="index.html" class="active" aria-current="page">Home</a></li>
-        <li><a href="Metal_Bed.html">Metal Bed</a></li>
-        <li><a href="Canape_Bed.html">Canapé Bed</a></li>
-        <li><a href="BSB_Signature.html">BSB Signature</a></li>
-        <li><a href="BSB_Original.html">BSB Original</a></li>
-        <li><a href="BSB_Essential.html">BSB Essential</a></li>
+        <li><a href="Metal_Frame_Bed.html">Metal Frame Bed</a></li>
+        <li><a href="Lift_Up_Storage_Bed.html">Lift-Up Storage Bed</a></li>
+        <li><a href="Box_Spring_Bed.html">Box Spring Bed</a></li>
       </ul>
     </nav>
   </header>
@@ -58,30 +56,75 @@
 
   <!-- Key Features Section -->
   <section class="key-features" aria-label="Key features">
+    <h2>What Makes Us Different?</h2>
     <div class="feature-container">
-      <div class="feature-card">
-        <h2>Durability</h2>
-        <div class="durability-bar">
-          <div class="bar-fill" data-years="6"></div>
+      <div class="feature-card" data-feature="durability">
+        <div class="feature-icon">
+          <i class="fas fa-clock fa-3x"></i>
         </div>
-        <div class="year-indicator">6 Years</div>
-      </div>
-      <div class="feature-card">
-        <h2>Repairability</h2>
-        <div class="repairability-bar">
-          <div class="bar-fill" data-percentage="85"></div>
+        <h3>Durability</h3>
+        <div class="visual-indicator">
+          <div class="circular-progress" data-value="14">
+            <div class="progress-value">14</div>
+            <div class="progress-label">Years</div>
+          </div>
         </div>
-        <div class="percentage-indicator">85%</div>
+        <div class="feature-tooltip">
+          Average lifespan of our bed parts
+        </div>
       </div>
-      <div class="feature-card">
-        <h2>Availability</h2>
-        <ul class="availability-list">
-          <li>Frame Components</li>
-          <li>Slats & Supports</li>
-          <li>Headboard Parts</li>
-          <li>Footboard Parts</li>
-          <li>Hardware & Fasteners</li>
-        </ul>
+
+      <div class="feature-card" data-feature="repairability">
+        <div class="feature-icon">
+          <i class="fas fa-tools fa-3x"></i>
+        </div>
+        <h3>Repairability</h3>
+        <div class="visual-indicator">
+          <div class="percentage-ring" data-percentage="85">
+            <svg>
+              <circle class="progress-background" cx="60" cy="60" r="54"></circle>
+              <circle class="progress-bar" cx="60" cy="60" r="54"></circle>
+            </svg>
+            <div class="percentage-value">85%</div>
+          </div>
+        </div>
+        <div class="feature-tooltip">
+          Parts that can be easily repaired
+        </div>
+      </div>
+
+      <div class="feature-card" data-feature="availability">
+        <div class="feature-icon">
+          <i class="fas fa-box-open fa-3x"></i>
+        </div>
+        <h3>Availability</h3>
+        <div class="visual-indicator">
+          <div class="parts-inventory">
+            <div class="inventory-item" title="Bed Frames">
+              <i class="fas fa-bed"></i>
+              <span class="item-label">Bed Frames</span>
+              <div class="stock-indicator in-stock">In Stock</div>
+            </div>
+            <div class="inventory-item" title="Support Parts">
+              <i class="fas fa-cog"></i>
+              <span class="item-label">Support Parts</span>
+              <div class="stock-indicator in-stock">In Stock</div>
+            </div>
+            <div class="inventory-item" title="Hardware">
+              <i class="fas fa-wrench"></i>
+              <span class="item-label">Hardware</span>
+              <div class="stock-indicator in-stock">In Stock</div>
+            </div>
+            <div class="inventory-item" title="Accessories">
+              <i class="fas fa-puzzle-piece"></i>
+              <span class="item-label">Accessories</span>
+              <div class="stock-indicator out-of-stock">Out of Stock</div>
+            </div>
+          </div>
+        </div>
+        <div class="feature-tooltip">
+          Real-time stock status
+        </div>
       </div>
     </div>
   </section>
@@ -92,42 +135,60 @@
     <div class="bed-grid">
       <article class="bed-card">
         <div class="bed-image">
-          <img src="https://placehold.co/400x300" alt="Metal Bed" loading="lazy">
+          <img src="https://placehold.co/400x300" alt="Metal Frame Bed" loading="lazy">
         </div>
         <div class="bed-info">
-          <h3>Metal Bed</h3>
+          <h3>Metal Frame Bed</h3>
           <div class="bed-features">
             <div class="feature">
               <i class="fas fa-clock"></i>
-              <span>6 Years Durability</span>
+              <span>12 Years Durability</span>
             </div>
             <div class="feature">
               <i class="fas fa-tools"></i>
               <span>85% Repairable</span>
             </div>
           </div>
-          <a href="Metal_Bed.html" class="cta-button">Explore Parts</a>
+          <a href="Metal_Frame_Bed.html" class="cta-button">Explore Parts</a>
         </div>
       </article>
       <article class="bed-card">
-        <h3>Canapé Bed</h3>
-        <p>Comfort meets longevity. Check out its repair guide.</p>
-        <a href="Canape_Bed.html" class="cta-button">Learn More</a>
+        <div class="bed-image">
+          <img src="https://placehold.co/400x300" alt="Lift-Up Storage Bed" loading="lazy">
+        </div>
+        <div class="bed-info">
+          <h3>Lift-Up Storage Bed</h3>
+          <div class="bed-features">
+            <div class="feature">
+              <i class="fas fa-clock"></i>
+              <span>15 Years Durability</span>
+            </div>
+            <div class="feature">
+              <i class="fas fa-tools"></i>
+              <span>80% Repairable</span>
+            </div>
+          </div>
+          <a href="Lift_Up_Storage_Bed.html" class="cta-button">Explore Parts</a>
+        </div>
       </article>
       <article class="bed-card">
-        <h3>BSB Signature</h3>
-        <p>Stylish design, easy to maintain and repair.</p>
-        <a href="BSB_Signature.html" class="cta-button">Learn More</a>
-      </article>
-      <article class="bed-card">
-        <h3>BSB Original</h3>
-        <p>Perfect for kids—built to handle all the jumps and bumps!</p>
-        <a href="BSB_Original.html" class="cta-button">Learn More</a>
-      </article>
-      <article class="bed-card">
-        <h3>BSB Essential</h3>
-        <p>Elegant choice, extended warranty and spare parts.</p>
-        <a href="BSB_Essential.html" class="cta-button">Learn More</a>
+        <div class="bed-image">
+          <img src="https://placehold.co/400x300" alt="Box Spring Bed" loading="lazy">
+        </div>
+        <div class="bed-info">
+          <h3>Box Spring Bed</h3>
+          <div class="bed-features">
+            <div class="feature">
+              <i class="fas fa-clock"></i>
+              <span>14 Years Durability</span>
+            </div>
+            <div class="feature">
+              <i class="fas fa-tools"></i>
+              <span>90% Repairable</span>
+            </div>
+          </div>
+          <a href="Box_Spring_Bed.html" class="cta-button">Explore Parts</a>
+        </div>
       </article>
     </div>
   </section>

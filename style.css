@@ -113,8 +113,15 @@ body {
 
 /* Key Features Section */
 .key-features {
-  padding: 5rem 5%;
-  background: var(--light-bg);
+  padding: 4rem 2rem;
+  background: #f8f9fa;
+}
+
+.key-features h2 {
+  text-align: center;
+  margin-bottom: 3rem;
+  font-size: 2.5rem;
+  color: #333;
 }
 
 .feature-container {
@@ -126,54 +133,200 @@ body {
 }
 
 .feature-card {
-  background: var(--white);
+  background: white;
   padding: 2rem;
-  border-radius: 10px;
-  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+  border-radius: 15px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  text-align: center;
   transition: transform 0.3s ease;
+  position: relative;
 }
 
 .feature-card:hover {
   transform: translateY(-5px);
 }
 
-/* Progress Bars */
-.durability-bar,
-.repairability-bar {
-  height: 20px;
-  background: #eee;
+.feature-icon {
+  margin-bottom: 1.5rem;
+  color: #4a90e2;
+}
+
+.feature-card h3 {
+  margin-bottom: 1.5rem;
+  color: #333;
+  font-size: 1.5rem;
+}
+
+/* Durability Indicator */
+.circular-progress {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  background: conic-gradient(#4a90e2 calc(var(--value) * 60deg), #e9ecef 0deg);
+  position: relative;
+  margin: 0 auto;
+}
+
+.progress-value {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -65%);
+  font-size: 2rem;
+  font-weight: bold;
+  color: #333;
+}
+
+.progress-label {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, 10%);
+  font-size: 1rem;
+  color: #666;
+}
+
+/* Repairability Indicator */
+.percentage-ring {
+  position: relative;
+  width: 120px;
+  height: 120px;
+  margin: 0 auto;
+}
+
+.percentage-ring svg {
+  width: 120px;
+  height: 120px;
+  transform: rotate(-90deg);
+}
+
+.percentage-ring circle {
+  fill: none;
+  stroke-width: 8;
+}
+
+.progress-background {
+  stroke: #e9ecef;
+}
+
+.progress-bar {
+  stroke: #4a90e2;
+  stroke-dasharray: 339.292;
+  stroke-dashoffset: calc(339.292 * (1 - var(--percentage) / 100));
+  transition: stroke-dashoffset 1s ease;
+}
+
+.percentage-value {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #333;
+}
+
+/* Availability Indicator */
+.parts-inventory {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  padding: 1rem;
+  background: #f8f9fa;
   border-radius: 10px;
-  margin: 1rem 0;
-  overflow: hidden;
+  margin: 0 auto;
 }
 
-.bar-fill {
-  height: 100%;
-  background: var(--secondary-color);
-  width: 0;
-  transition: width 1s ease-in-out;
+.inventory-item {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 0.75rem;
+  background: white;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+  transition: transform 0.2s ease;
 }
 
-.year-indicator,
-.percentage-indicator {
+.inventory-item:hover {
+  transform: translateX(5px);
+}
+
+.inventory-item i {
+  font-size: 1.5rem;
+  color: #4a90e2;
+  width: 30px;
   text-align: center;
-  font-weight: 600;
-  color: var(--primary-color);
 }
 
-/* Availability List */
-.availability-list {
-  list-style: none;
-  margin-top: 1rem;
+.item-label {
+  flex: 1;
+  font-size: 0.9rem;
+  color: #333;
+  font-weight: 500;
+  text-align: left;
 }
 
-.availability-list li {
-  padding: 0.5rem 0;
-  border-bottom: 1px solid #eee;
+.stock-indicator {
+  padding: 0.25rem 0.5rem;
+  border-radius: 4px;
+  font-size: 0.8rem;
+  font-weight: 500;
 }
 
-.availability-list li:last-child {
-  border-bottom: none;
+.stock-indicator.in-stock {
+  background: #e8f5e9;
+  color: #2e7d32;
+}
+
+.stock-indicator.low-stock {
+  background: #fff3e0;
+  color: #ef6c00;
+}
+
+.stock-indicator.out-of-stock {
+  background: #ffebee;
+  color: #c62828;
+}
+
+/* Responsive adjustments for availability section */
+@media (max-width: 768px) {
+  .parts-inventory {
+    padding: 0.5rem;
+  }
+
+  .inventory-item {
+    padding: 0.5rem;
+  }
+
+  .item-label {
+    font-size: 0.8rem;
+  }
+
+  .stock-indicator {
+    font-size: 0.7rem;
+  }
+}
+
+/* High contrast mode adjustments */
+@media (prefers-contrast: high) {
+  .inventory-item {
+    border: 1px solid #000;
+  }
+
+  .stock-indicator.in-stock {
+    background: #000;
+    color: #fff;
+  }
+}
+
+/* Remove old parts grid styles */
+.parts-grid {
+  display: none;
+}
+
+.part-icon {
+  display: none;
 }
 
 /* Bed Categories Section */
@@ -450,17 +603,20 @@ body {
   display: block;
   width: calc(100% - 3rem);
   margin: 1.5rem;
-  padding: 1rem;
+  padding: 1.2rem;
   background: var(--secondary-color);
   color: var(--white);
   border: none;
   border-radius: 5px;
   cursor: pointer;
   transition: background 0.3s ease;
+  font-size: 1.1rem;
+  font-weight: 600;
 }
 
 .order-button:hover {
   background: #2980b9;
+  transform: scale(1.02);
 }
 
 /* Installation Guide Section */
@@ -522,4 +678,160 @@ body {
   .guide-container {
     grid-template-columns: 1fr;
   }
+}
+
+/* Durability Bar Animation */
+@keyframes fillBar {
+  from {
+    width: 0;
+  }
+  to {
+    width: var(--fill-width);
+  }
+}
+
+@keyframes fadeInScale {
+  0% {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.durability-bar .bar-fill {
+  --fill-width: calc(var(--years) / 10 * 100%);
+  width: var(--fill-width);
+  height: 100%;
+  background: var(--secondary-color);
+  border-radius: 5px;
+  animation: fillBar 1.2s ease-out;
+}
+
+.durability-bar {
+  width: 100%;
+  height: 10px;
+  background: #e0e0e0;
+  border-radius: 5px;
+  margin: 1rem 0;
+  overflow: hidden;
+}
+
+.year-indicator {
+  animation: fadeInScale 0.8s ease-out 0.2s both;
+}
+
+.repairability-bar .bar-fill {
+  --fill-width: calc(var(--percentage) * 1%);
+  width: var(--fill-width);
+  height: 100%;
+  background: var(--secondary-color);
+  border-radius: 5px;
+  animation: fillBar 1.2s ease-out;
+}
+
+.repairability-bar {
+  width: 100%;
+  height: 10px;
+  background: #e0e0e0;
+  border-radius: 5px;
+  margin: 1rem 0;
+  overflow: hidden;
+}
+
+.percentage-indicator {
+  animation: fadeInScale 0.8s ease-out 0.2s both;
+}
+
+/* Availability Animation */
+@keyframes slideIn {
+  from {
+    transform: translateX(-20px);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+.inventory-item {
+  animation: slideIn 0.5s ease-out backwards;
+}
+
+.inventory-item:nth-child(1) {
+  animation-delay: 0.1s;
+}
+
+.inventory-item:nth-child(2) {
+  animation-delay: 0.2s;
+}
+
+.inventory-item:nth-child(3) {
+  animation-delay: 0.3s;
+}
+
+.inventory-item:nth-child(4) {
+  animation-delay: 0.4s;
+}
+
+/* Add animation trigger on scroll */
+.spec-item {
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fadeInUp 0.8s ease-out forwards;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.spec-item:nth-child(1) {
+  animation-delay: 0.2s;
+}
+
+.spec-item:nth-child(2) {
+  animation-delay: 0.4s;
+}
+
+/* Update the durability and repairability bars to use CSS custom properties */
+.durability-bar .bar-fill {
+  --years: attr(data-years number);
+}
+
+.repairability-bar .bar-fill {
+  --percentage: attr(data-percentage number);
+}
+
+/* Durability Counter Styles */
+.durability-counter {
+  font-size: 3rem;
+  font-weight: bold;
+  color: var(--secondary-color);
+  display: inline-block;
+  margin: 1rem 0;
+  position: relative;
+}
+
+.durability-counter::after {
+  content: " Years";
+  font-size: 1rem;
+  color: var(--text-color);
+  margin-left: 0.5rem;
+}
+
+/* Remove old durability bar styles */
+.durability-bar,
+.durability-bar .bar-fill,
+.year-indicator {
+  display: none;
 }
