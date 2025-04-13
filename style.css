@@ -62,7 +62,7 @@ body {
 /* Hero Section */
 .hero {
   background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)),
-              url('https://placehold.co/1920x1080') center/cover;
+              url('https://media.istockphoto.com/id/1455339286/photo/3d-rendering-of-cozy-bed-over-fluffy-clouds-at-night.jpg?s=612x612&w=0&k=20&c=zdy0PPWuF427RwG8csRAhq04fYg9UiuXH003ILWBPKk=') center/cover;
   height: 80vh;
   display: flex;
   align-items: center;
